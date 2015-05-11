@@ -1,0 +1,24 @@
+{
+  "name": "react-classmap",
+  "version": "0.0.1",
+  "description": "Define a mapping of additional class names to apply to your React DOM components",
+  "main": "lib/classmap.js",
+  "scripts": {
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "test": "mocha src/__tests__ --require babel/register --require src/__tests__/setup"
+  },
+  "author": "Alexandre Kirszenberg <alexandre@botify.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.1.13",
+    "babel-core": "^5.1.13",
+    "babel-loader": "^5.0.0",
+    "expect": "^1.6.0",
+    "jsdom": "^3.1.2",
+    "mocha": "^2.2.4"
+  }
+}
