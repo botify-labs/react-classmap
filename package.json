@@ -2,7 +2,7 @@
   "name": "react-classmap",
   "version": "0.0.1",
   "description": "Define a mapping of additional class names to apply to your React DOM components",
-  "main": "lib/classmap.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src/ -d lib/",
     "prepublish": "npm run build",
