@@ -8,7 +8,7 @@
     "prepublish": "npm run build",
     "test": "mocha src/__tests__ --require babel/register --require src/__tests__/setup"
   },
-  "author": "Alexandre Kirszenberg <alexandre@botify.com>",
+  "author": "Botify <labs@botify.com>",
   "license": "MIT",
   "dependencies": {
     "react": "^0.13.3"
