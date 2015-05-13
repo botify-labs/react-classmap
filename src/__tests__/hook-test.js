@@ -1,10 +1,11 @@
-import '../classdef';
+import '../hook';
+import { CLASSMAP_KEY } from '../constants';
 import expect from 'expect';
 import React, { PropTypes, addons } from 'react/addons';
 
 const { TestUtils } = addons;
 
-describe('classdef', () => {
+describe('hook', () => {
 
   it('only applies additional classNames as props to DOM components', () => {
 
@@ -16,15 +17,15 @@ describe('classdef', () => {
 
     const Test = React.createClass({
       childContextTypes: {
-        classDef: PropTypes.object,
+        [CLASSMAP_KEY]: PropTypes.object,
       },
+
       getChildContext() {
         return {
-          classDef: {
-            Child: 'class1 class2',
-          },
+          [CLASSMAP_KEY]: { Child: 'class1 class2' },
         };
       },
+
       render() {
         return (
           <div>
@@ -48,15 +49,15 @@ describe('classdef', () => {
 
     const Child1 = React.createClass({
       childContextTypes: {
-        classDef: PropTypes.object,
+        [CLASSMAP_KEY]: PropTypes.object,
       },
+
       getChildContext() {
         return {
-          classDef: {
-            Child: 'class1',
-          },
+          [CLASSMAP_KEY]: { Child: 'class1' },
         };
       },
+
       render() {
         return <div {...this.props} />;
       },
@@ -98,15 +99,15 @@ describe('classdef', () => {
 
     const FooBar = React.createClass({
       childContextTypes: {
-        classDef: PropTypes.object,
+        [CLASSMAP_KEY]: PropTypes.object,
       },
+
       getChildContext() {
         return {
-          classDef: {
-            foo: 'bar',
-          },
+          [CLASSMAP_KEY]: { foo: 'bar' },
         };
       },
+
       render() {
         return <div className="foo" />;
       },

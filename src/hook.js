@@ -3,6 +3,7 @@
 // object during React's initialization process.
 
 import ReactCompositeComponent from 'react/lib/ReactCompositeComponent';
+import { CLASSMAP_KEY } from './constants';
 
 function applyClassMap(value, classMap) {
   if (!value || !classMap) {
@@ -32,7 +33,7 @@ ReactCompositeComponent.Mixin._processProps = function(props) {
     let context = this._context;
     processedProps = {
       ...processedProps,
-      className: applyClassMap(processedProps.className, context.classMap)
+      className: applyClassMap(processedProps.className, context[CLASSMAP_KEY])
     };
   }
   return processedProps;
