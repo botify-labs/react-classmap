@@ -1,6 +1,6 @@
 {
   "name": "react-classmap",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Define a mapping of additional class names to apply to your React DOM components",
   "main": "lib/index.js",
   "scripts": {
