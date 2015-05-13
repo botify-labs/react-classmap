@@ -9,6 +9,10 @@
     "test": "mocha src/__tests__ --require babel/register --require src/__tests__/setup"
   },
   "author": "Botify <labs@botify.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:botify-labs/react-classmap.git"
+  },
   "license": "MIT",
   "dependencies": {
     "react": "^0.13.3"
