@@ -33,7 +33,7 @@ const MyButton = React.createClass({
 });
 
 React.renderToString(<MyButton />);
-// => <button class="generic-button fa fa-cog"></div>
+// => <button class="generic-button fa fa-cog"></button>
 ```
 
 If you're using ES6 classes instead of `React.createClass`, there's a [higher-order component](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775).
