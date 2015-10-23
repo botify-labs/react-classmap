@@ -2,7 +2,8 @@
 // `ReactCompositeComponent.Mixin` properties are copied over to a private
 // object during React's initialization process.
 
-import ReactCompositeComponent from 'react/lib/ReactCompositeComponent';
+import ReactDOMComponent from 'react/lib/ReactDOMComponent';
+import { cloneElement } from 'react/lib/ReactElement';
 import { CLASSMAP_KEY } from './constants';
 
 function applyClassMap(value, classMap) {
@@ -19,22 +20,38 @@ function applyClassMap(value, classMap) {
   return classNames;
 }
 
-function rendersDOMComponent(component) {
-  return typeof component._currentElement.type === 'string';
+const { mountComponent, updateComponent } = ReactDOMComponent.prototype;
+
+function applyClassMapToElement(element, context) {
+  return cloneElement(element, {
+    className: applyClassMap(
+      element.props.className,
+      context[CLASSMAP_KEY]
+    ),
+  });
 }
 
-const { _processProps } = ReactCompositeComponent.Mixin;
-ReactCompositeComponent.Mixin._processProps = function(props) {
-  let processedProps = _processProps.call(this, props);
-  if (
-    rendersDOMComponent(this) &&
-    typeof processedProps.className !== 'undefined'
-  ) {
-    let context = this._context;
-    processedProps = {
-      ...processedProps,
-      className: applyClassMap(processedProps.className, context[CLASSMAP_KEY])
-    };
-  }
-  return processedProps;
+ReactDOMComponent.prototype.mountComponent = function(
+  rootID,
+  transaction,
+  context
+) {
+  this._currentElement = applyClassMapToElement(this._currentElement, context);
+  return mountComponent.call(this, rootID, transaction, context);
+};
+
+ReactDOMComponent.prototype.updateComponent = function(
+  transaction,
+  prevElement,
+  nextElement,
+  context
+) {
+  this._currentElement = applyClassMapToElement(this._currentElement, context);
+  return updateComponent.call(
+    this,
+    transaction,
+    prevElement,
+    nextElement,
+    context
+  );
 };
