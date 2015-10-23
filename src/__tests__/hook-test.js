@@ -1,9 +1,10 @@
 import '../hook';
 import { CLASSMAP_KEY } from '../constants';
 import expect from 'expect';
-import React, { PropTypes, addons } from 'react/addons';
-
-const { TestUtils } = addons;
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
+import TestUtils from 'react-addons-test-utils';
 
 describe('hook', () => {
 
@@ -66,11 +67,11 @@ describe('hook', () => {
     });
 
     let div = document.createElement('div');
-    let test = React.render(<Test className="class1" />, div);
+    let test = ReactDOM.render(<Test className="class1" />, div);
 
     TestUtils.findRenderedDOMComponentWithClass(test, 'class3');
 
-    React.render(<Test className="class2" />, div);
+    ReactDOM.render(<Test className="class2" />, div);
 
     TestUtils.findRenderedDOMComponentWithClass(test, 'class4');
 
@@ -126,7 +127,7 @@ describe('hook', () => {
     expect(child2DOM.className).toEqual('Child');
   });
 
-  it('works with `React.renderToString()`', () => {
+  it('works with `ReactDOMServer.renderToString()`', () => {
 
     const FooBar = React.createClass({
       childContextTypes: {
@@ -144,7 +145,7 @@ describe('hook', () => {
       },
     });
 
-    expect(React.renderToString(<FooBar />)).toMatch(/class="foo bar"/);
+    expect(ReactDOMServer.renderToString(<FooBar />)).toMatch(/class="foo bar"/);
   });
 
 });

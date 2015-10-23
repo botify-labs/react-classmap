@@ -1,8 +1,8 @@
 import classMap from '../hoc';
 import expect from 'expect';
-import React, { addons } from 'react/addons';
-
-const { TestUtils } = addons;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
 
 describe('classMap', () => {
 
@@ -18,7 +18,7 @@ describe('classMap', () => {
 
     // For some reason `TestUtils.findRenderedDOMComponentWithClass` doesn't
     // work with higher-order components.
-    expect(React.findDOMNode(test).className).toEqual('child class1 class2');
+    expect(ReactDOM.findDOMNode(test).className).toEqual('child class1 class2');
 
   });
 
@@ -33,7 +33,7 @@ describe('classMap', () => {
 
     let test = TestUtils.renderIntoDocument(<Test />);
 
-    expect(React.findDOMNode(test).className).toEqual('child class1 class2');
+    expect(ReactDOM.findDOMNode(test).className).toEqual('child class1 class2');
 
   });
 
