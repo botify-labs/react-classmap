@@ -45,6 +45,37 @@ describe('hook', () => {
 
   });
 
+  it('updates correctly', () => {
+
+    const Test = React.createClass({
+      childContextTypes: {
+        [CLASSMAP_KEY]: PropTypes.object,
+      },
+
+      getChildContext() {
+        return {
+          [CLASSMAP_KEY]: { class1: 'class3', class2: 'class4' },
+        };
+      },
+
+      render() {
+        return (
+          <div {...this.props} />
+        );
+      },
+    });
+
+    let div = document.createElement('div');
+    let test = React.render(<Test className="class1" />, div);
+
+    TestUtils.findRenderedDOMComponentWithClass(test, 'class3');
+
+    React.render(<Test className="class2" />, div);
+
+    TestUtils.findRenderedDOMComponentWithClass(test, 'class4');
+
+  });
+
   it('doesn\'t leak', () => {
 
     const Child1 = React.createClass({
