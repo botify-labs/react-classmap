@@ -25,7 +25,7 @@ describe('classMap', () => {
   it('works as a decorator', () => {
 
     @classMap({ child: 'class1 class2' })
-    class Test {
+    class Test extends React.Component {
       render() {
         return <div className="child" />;
       }

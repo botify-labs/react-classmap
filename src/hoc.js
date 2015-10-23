@@ -12,7 +12,7 @@ export default function classMap(...args) {
 
   let [Composed, map] = args;
 
-  return class ClassMap {
+  return class ClassMap extends React.Component {
     static childContextTypes = { [CLASSMAP_KEY]: PropTypes.object };
 
     getChildContext() {
