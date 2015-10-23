@@ -41,7 +41,7 @@ describe('hook', () => {
     expect(child.props.className).toEqual('Child');
 
     let childDOM = TestUtils.findRenderedDOMComponentWithClass(test, 'Child');
-    expect(childDOM.props.className).toEqual('Child class1 class2');
+    expect(childDOM.className).toEqual('Child class1 class2');
 
   });
 
@@ -120,10 +120,10 @@ describe('hook', () => {
     expect(child2.props.className).toEqual('Child');
 
     let child1DOM = TestUtils.findRenderedDOMComponentWithClass(child1, 'Child');
-    expect(child1DOM.props.className).toEqual('Child class1');
+    expect(child1DOM.className).toEqual('Child class1');
 
     let child2DOM = TestUtils.findRenderedDOMComponentWithClass(child2, 'Child');
-    expect(child2DOM.props.className).toEqual('Child');
+    expect(child2DOM.className).toEqual('Child');
   });
 
   it('works with `React.renderToString()`', () => {
