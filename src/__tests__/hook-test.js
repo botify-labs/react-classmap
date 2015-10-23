@@ -1,10 +1,11 @@
-import '../hook';
-import { CLASSMAP_KEY } from '../constants';
 import expect from 'expect';
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 import TestUtils from 'react-addons-test-utils';
+
+import { CLASSMAP_KEY } from '../constants';
+import '../hook';
 
 describe('hook', () => {
 

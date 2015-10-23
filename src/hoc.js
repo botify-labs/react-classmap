@@ -1,6 +1,7 @@
-import './hook';
-import { CLASSMAP_KEY } from './constants';
 import React, { PropTypes } from 'react';
+
+import { CLASSMAP_KEY } from './constants';
+import './hook';
 
 export default function classMap(...args) {
   if (args.length === 1) {

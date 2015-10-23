@@ -1,8 +1,9 @@
-import classMap from '../hoc';
 import expect from 'expect';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+
+import classMap from '../hoc';
 
 describe('classMap', () => {
 

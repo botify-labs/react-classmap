@@ -1,7 +1,8 @@
-import ClassMapMixin from '../mixin';
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+
+import ClassMapMixin from '../mixin';
 
 describe('ClassMapMixin', () => {
 

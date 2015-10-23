@@ -4,6 +4,7 @@
 
 import ReactDOMComponent from 'react/lib/ReactDOMComponent';
 import { cloneElement } from 'react/lib/ReactElement';
+
 import { CLASSMAP_KEY } from './constants';
 
 function applyClassMap(value, classMap) {
