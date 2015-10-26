@@ -3,7 +3,7 @@
 // object during React's initialization process.
 
 import ReactDOMComponent from 'react/lib/ReactDOMComponent';
-import { cloneElement } from 'react/lib/ReactElement';
+import { cloneElement } from 'react';
 
 import { CLASSMAP_KEY } from './constants';
 
