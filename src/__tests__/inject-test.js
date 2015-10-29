@@ -5,9 +5,9 @@ import ReactDOMServer from 'react-dom/server';
 import TestUtils from 'react-addons-test-utils';
 
 import { CLASSMAP_KEY } from '../constants';
-import '../hook';
+import '../inject';
 
-describe('hook', () => {
+describe('inject', () => {
 
   it('only applies additional classNames as props to DOM components', () => {
 

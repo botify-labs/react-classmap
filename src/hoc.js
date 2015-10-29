@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import { CLASSMAP_KEY } from './constants';
-import './hook';
+import './inject';
 
 export default function classMap(...args) {
   if (args.length === 1) {
