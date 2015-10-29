@@ -45,7 +45,7 @@ describe('classMap', () => {
       static foo = 'bar';
 
       render() {
-        return <div className="child" />;
+        return <div />;
       }
     }
 
