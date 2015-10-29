@@ -18,12 +18,14 @@ function applyClassMap(value, classMap) {
 }
 
 function applyClassMapToElement(element, context) {
-  return cloneElement(element, {
-    className: applyClassMap(
-      element.props.className,
-      context[CLASSMAP_KEY]
-    ),
-  });
+  let className = applyClassMap(
+    element.props.className,
+    context[CLASSMAP_KEY]
+  );
+  if (className === element.props.className) {
+    return element;
+  }
+  return cloneElement(element, { className });
 }
 
 class DOMComponent extends ReactDOMComponent {
