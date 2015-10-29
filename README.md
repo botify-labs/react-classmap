@@ -1,5 +1,7 @@
 # react-classmap
 
+[![Build Status](https://travis-ci.org/botify-labs/react-classmap.svg)](https://travis-ci.org/botify-labs/react-classmap)
+
 This hook lets you reconcile third-party React components with your CSS framework of choice by defining a mapping of additional class names to apply to children DOM components that have a given class name.
 
 ## Usage
