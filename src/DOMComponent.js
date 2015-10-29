@@ -38,7 +38,10 @@ class DOMComponent extends ReactDOMComponent {
   }
 
   updateComponent(transaction, prevElement, nextElement, context) {
-    this._currentElement = applyClassMapToElement(this._currentElement, context);
+    this._currentElement = applyClassMapToElement(
+      this._currentElement,
+      context
+    );
     return super.updateComponent(
       transaction,
       prevElement,
