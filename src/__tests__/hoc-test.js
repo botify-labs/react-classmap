@@ -38,4 +38,19 @@ describe('classMap', () => {
 
   });
 
+  it('preserves non react statics', () => {
+
+    @classMap({})
+    class Test extends React.Component {
+      static foo = 'bar';
+
+      render() {
+        return <div />;
+      }
+    }
+
+    expect(Test.foo).toBe('bar');
+
+  });
+
 });
