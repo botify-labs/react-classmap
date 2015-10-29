@@ -1,6 +1,7 @@
-import './hook';
-import { CLASSMAP_KEY } from './constants';
 import React, { PropTypes } from 'react';
+
+import { CLASSMAP_KEY } from './constants';
+import './inject';
 
 export default function classMap(...args) {
   if (args.length === 1) {
@@ -12,7 +13,7 @@ export default function classMap(...args) {
 
   let [Composed, map] = args;
 
-  return class ClassMap {
+  return class ClassMap extends React.Component {
     static childContextTypes = { [CLASSMAP_KEY]: PropTypes.object };
 
     getChildContext() {

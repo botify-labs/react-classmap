@@ -4,11 +4,9 @@ This hook lets you reconcile third-party React components with your CSS framewor
 
 ## Usage
 
-You need to require `react-classmap` **before** you require `react`, otherwise the hook will not be applied correctly.
-
 ```js
-import { ClassMapMixin } from 'react-classmap';
 import React, { PropTypes } from 'react';
+import { ClassMapMixin } from 'react-classmap';
 
 const GenericButton = React.createClass({
   render() {

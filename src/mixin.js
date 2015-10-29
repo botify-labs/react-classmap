@@ -1,6 +1,7 @@
-import './hook';
-import { CLASSMAP_KEY } from './constants';
 import { PropTypes } from 'react';
+
+import { CLASSMAP_KEY } from './constants';
+import './inject';
 
 export default function ClassMapMixin(map) {
   return {

@@ -1,11 +1,13 @@
-import '../hook';
-import { CLASSMAP_KEY } from '../constants';
 import expect from 'expect';
-import React, { PropTypes, addons } from 'react/addons';
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
+import TestUtils from 'react-addons-test-utils';
 
-const { TestUtils } = addons;
+import { CLASSMAP_KEY } from '../constants';
+import '../inject';
 
-describe('hook', () => {
+describe('inject', () => {
 
   it('only applies additional classNames as props to DOM components', () => {
 
@@ -41,7 +43,38 @@ describe('hook', () => {
     expect(child.props.className).toEqual('Child');
 
     let childDOM = TestUtils.findRenderedDOMComponentWithClass(test, 'Child');
-    expect(childDOM.props.className).toEqual('Child class1 class2');
+    expect(childDOM.className).toEqual('Child class1 class2');
+
+  });
+
+  it('updates correctly', () => {
+
+    const Test = React.createClass({
+      childContextTypes: {
+        [CLASSMAP_KEY]: PropTypes.object,
+      },
+
+      getChildContext() {
+        return {
+          [CLASSMAP_KEY]: { class1: 'class3', class2: 'class4' },
+        };
+      },
+
+      render() {
+        return (
+          <div {...this.props} />
+        );
+      },
+    });
+
+    let div = document.createElement('div');
+    let test = ReactDOM.render(<Test className="class1" />, div);
+
+    TestUtils.findRenderedDOMComponentWithClass(test, 'class3');
+
+    ReactDOM.render(<Test className="class2" />, div);
+
+    TestUtils.findRenderedDOMComponentWithClass(test, 'class4');
 
   });
 
@@ -89,13 +122,13 @@ describe('hook', () => {
     expect(child2.props.className).toEqual('Child');
 
     let child1DOM = TestUtils.findRenderedDOMComponentWithClass(child1, 'Child');
-    expect(child1DOM.props.className).toEqual('Child class1');
+    expect(child1DOM.className).toEqual('Child class1');
 
     let child2DOM = TestUtils.findRenderedDOMComponentWithClass(child2, 'Child');
-    expect(child2DOM.props.className).toEqual('Child');
+    expect(child2DOM.className).toEqual('Child');
   });
 
-  it('works with `React.renderToString()`', () => {
+  it('works with `ReactDOMServer.renderToString()`', () => {
 
     const FooBar = React.createClass({
       childContextTypes: {
@@ -113,7 +146,7 @@ describe('hook', () => {
       },
     });
 
-    expect(React.renderToString(<FooBar />)).toMatch(/class="foo bar"/);
+    expect(ReactDOMServer.renderToString(<FooBar />)).toMatch(/class="foo bar"/);
   });
 
 });

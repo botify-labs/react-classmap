@@ -1,8 +1,8 @@
-import ClassMapMixin from '../mixin';
 import expect from 'expect';
-import React, { addons } from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
-const { TestUtils } = addons;
+import ClassMapMixin from '../mixin';
 
 describe('ClassMapMixin', () => {
 
@@ -23,7 +23,7 @@ describe('ClassMapMixin', () => {
     let test = TestUtils.renderIntoDocument(<Test />);
 
     let childDOM = TestUtils.findRenderedDOMComponentWithClass(test, 'child');
-    expect(childDOM.props.className).toEqual('child class1 class2');
+    expect(childDOM.className).toEqual('child class1 class2');
 
   });
 
