@@ -29,12 +29,12 @@ function applyClassMapToElement(element, context) {
 }
 
 class DOMComponent extends ReactDOMComponent {
-  mountComponent(rootID, transaction, context) {
+  mountComponent(transaction, hostParent, hostContainerInfo, context) {
     this._currentElement = applyClassMapToElement(
       this._currentElement,
       context
     );
-    return super.mountComponent(rootID, transaction, context);
+    return super.mountComponent(...arguments);
   }
 
   updateComponent(transaction, prevElement, nextElement, context) {
@@ -42,12 +42,7 @@ class DOMComponent extends ReactDOMComponent {
       this._currentElement,
       context
     );
-    return super.updateComponent(
-      transaction,
-      prevElement,
-      nextElement,
-      context
-    );
+    return super.updateComponent(...arguments);
   }
 }
 
